@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioMatch - Plataforma de Validación de Identidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6b46c1 0%, #4299e1 100%);
+            color: white;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #f6e05e, #f687b3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+        
+        .price-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .price-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .highlight {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(246, 224, 94, 0.3);
+            z-index: -1;
+            transform: skewY(-2deg);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Navigation Dots -->
+    <div class="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-4">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+    </div>
+
+    <!-- Slides -->
+    <div class="slides-container">
+        <!-- Slide 1: Cover -->
+        <div class="slide active" id="slide-0">
+            <div class="container mx-auto h-full flex flex-col justify-center items-center text-center px-4">
+                <div class="mb-8">
+                    <i class="fas fa-fingerprint text-6xl mb-4 gradient-text"></i>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4">Bio<span class="gradient-text">Match</span></h1>
+                    <p class="text-xl md:text-2xl opacity-90">Plataforma de Validación de Identidad por Reconocimiento Facial</p>
+                </div>
+                
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+                    <div class="feature-card p-6 rounded-xl">
+                        <i class="fas fa-bolt text-3xl mb-4 gradient-text"></i>
+                        <h3 class="text-xl font-semibold mb-2">BioMatch Basic</h3>
+                        <p class="opacity-80">Versión funcional inicial para validación rápida</p>
+                    </div>
+                    <div class="feature-card p-6 rounded-xl">
+                        <i class="fas fa-rocket text-3xl mb-4 gradient-text"></i>
+                        <h3 class="text-xl font-semibold mb-2">BioMatch Pro</h3>
+                        <p class="opacity-80">Plataforma completa, segura y escalable</p>
+                    </div>
+                </div>
+                
+                <div class="mt-16 animate-bounce">
+                    <p class="text-sm opacity-70">Desliza para continuar</p>
+                    <i class="fas fa-chevron-down mt-2"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: BioMatch Basic -->
+        <div class="slide" id="slide-1">
+            <div class="container mx-auto h-full flex flex-col justify-center">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="gradient-text">BioMatch</span> Basic</h2>
+                    <p class="text-xl opacity-90 max-w-3xl mx-auto">Solución inicial para validación de identidad con integración RENAPER</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="price-card p-8 rounded-xl">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1">Duración</h3>
+                                <p class="text-xl">1 mes</p>
+                            </div>
+                            <div class="text-right">
+                                <h3 class="text-2xl font-bold mb-1">Precio</h3>
+                                <p class="text-xl">USD 8.000</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Soporte mensual</h3>
+                            <p class="text-lg">USD 1.000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold mb-6 highlight inline-block">Alcance</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>Captura de imagen (upload o cámara)</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>Ingreso de DNI</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>Consulta a API RENAPER para validación facial</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>Visualización del resultado (match, score, datos personales)</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>Historial de consultas dentro de la sesión (no persistente)</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>App web accesible desde navegador moderno</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>Seguridad básica: HTTPS, validación de datos, control de acceso simple</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <p>Despliegue en servidor cloud (AWS, DigitalOcean u on-premise)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: BioMatch Basic Objetivos -->
+        <div class="slide" id="slide-2">
+            <div class="container mx-auto h-full flex flex-col justify-center">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Objetivos <span class="gradient-text">BioMatch Basic</span></h2>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="feature-card p-6 rounded-xl text-center">
+                            <i class="fas fa-plug text-4xl mb-4 gradient-text"></i>
+                            <h3 class="text-xl font-semibold mb-2">Validación de Integración</h3>
+                            <p class="opacity-80">Confirmar funcionalidad de conexión con RENAPER</p>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl text-center">
+                            <i class="fas fa-chart-line text-4xl mb-4 gradient-text"></i>
+                            <h3 class="text-xl font-semibold mb-2">Efectividad del Sistema</h3>
+                            <p class="opacity-80">Demostrar precisión en la verificación facial</p>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl text-center">
+                            <i class="fas fa-layer-group text-4xl mb-4 gradient-text"></i>
+                            <h3 class="text-xl font-semibold mb-2">Base para Desarrollo</h3>
+                            <p class="opacity-80">Servir como fundamento para versiones avanzadas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 feature-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-6 highlight inline-block">Entregables</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-box-open text-purple-300 mt-1 mr-3"></i>
+                                <p>Aplicación web funcional</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-link text-purple-300 mt-1 mr-3"></i>
+                                <p>Conexión a API RENAPER o entorno simulado</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-book text-purple-300 mt-1 mr-3"></i>
+                                <p>Manual de uso</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-lock text-purple-300 mt-1 mr-3"></i>
+                                <p>Acceso privado con seguridad básica</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: BioMatch Pro -->
+        <div class="slide" id="slide-3">
+            <div class="container mx-auto h-full flex flex-col justify-center">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="gradient-text">BioMatch</span> Pro</h2>
+                    <p class="text-xl opacity-90 max-w-3xl mx-auto">Plataforma completa para gestión de identidad con todas las funcionalidades</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="price-card p-8 rounded-xl">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1">Duración</h3>
+                                <p class="text-xl">3 meses</p>
+                            </div>
+                            <div class="text-right">
+                                <h3 class="text-2xl font-bold mb-1">Precio</h3>
+                                <p class="text-xl">USD 20.000</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Soporte mensual</h3>
+                            <p class="text-lg">USD 1.200</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold mb-6 highlight inline-block">Módulos y Funcionalidades</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-user-shield text-blue-300 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Verificación facial</h4>
+                                    <p class="text-sm opacity-80">Procesamiento de imagen + DNI, llamado a RENAPER, retorno de score y datos</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-users-cog text-blue-300 mt-1 mr-
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const navDots = document.querySelectorAll('.nav-dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                navDots[i].classList.remove('active');
+            });
+            slides[index].classList.add('active');
+            navDots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        navDots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const slideIndex = parseInt(e.target.dataset.slide);
+                showSlide(slideIndex);
+            });
+        });
+
+        // Swipe functionality
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        function checkDirection() {
+            if (touchendX < touchstartX) { // Swiped left
+                if (currentSlide < slides.length - 1) {
+                    showSlide(currentSlide + 1);
+                }
+            }
+            if (touchendX > touchstartX) { // Swiped right
+                if (currentSlide > 0) {
+                    showSlide(currentSlide - 1);
+                }
+            }
+        }
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            checkDirection();
+        });
+
+        // Optional: Add keyboard navigation (left/right arrows)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                if (currentSlide < slides.length - 1) {
+                    showSlide(currentSlide + 1);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentSlide > 0) {
+                    showSlide(currentSlide - 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
